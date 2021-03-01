@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Add a song!</h1>
+<form action="/songs/add" method="POST">
+    {{ form.hidden_tag() }}
+    {% for input in form if input.widget.input_type != 'hidden' %}
+    {{ input.label }}
+    {{ input(class_="form-control") }}
+    {% for error in input.errors %}
+    {{ error }}
+    {% endfor %}
+    {% endfor %}
+    <button class="btn btn-primary">Submit Song</button>
+</form>
+
+
+{% endblock %}
